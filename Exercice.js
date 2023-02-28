@@ -16,3 +16,17 @@ const SCORES_POSSIBLES = [
   'yathzee',
   'chance',
 ];
+// Fonction pour lancer les dés
+function lancerDes(nbDes) {
+  const des = [];
+  for (let i = 0; i < nbDes; i++) {
+    des.push(lancerDe(NB_FACES));
+  }
+  return des;
+}
+// Fonction pour lancer un dé et nombre de faces 
+function lancerDe(nbFaces) {
+  return Math.floor(Math.random() * nbFaces) + 1;
+}
+//export des fonctions
+module.exports = {lancerDes}
