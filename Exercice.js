@@ -16,6 +16,7 @@ const SCORES_POSSIBLES = [
   'yathzee',
   'chance',
 ];
+
 // Fonction pour lancer les dés
 function lancerDes(nbDes) {
   const des = [];
@@ -24,10 +25,12 @@ function lancerDes(nbDes) {
   }
   return des;
 }
-// Fonction pour lancer un dé et nombre de faces 
+
+// Fonction pour lancer un dé
 function lancerDe(nbFaces) {
   return Math.floor(Math.random() * nbFaces) + 1;
 }
+
 // Fonction pour compter le nombre d'occurrences de chaque valeur
 function compterOccurrences(des) {
   const occurrences = [0, 0, 0, 0, 0, 0];
@@ -36,5 +39,28 @@ function compterOccurrences(des) {
   }
   return occurrences;
 }
-//export des fonctions
-module.exports = {lancerDes,compterOccurrences}
+//fonction de calcule score
+function calculerScore(des, categorie) {
+  switch (categorie) {
+    case 'as':
+      return des.filter((valeur) => valeur === 1).reduce((sum, valeur) => sum + valeur, 0);
+    case 'deux':
+      return des.filter((valeur) => valeur === 2).reduce((sum, valeur) => sum + valeur, 0);
+    case 'trois':
+      return des.filter((valeur) => valeur === 3).reduce((sum, valeur) => sum + valeur, 0);
+    case 'quatre':
+      return des.filter((valeur) => valeur === 4).reduce((sum, valeur) => sum + valeur, 0);
+    case 'cinq':
+      return des.filter((valeur) => valeur === 5).reduce((sum, valeur) => sum + valeur, 0);
+    case 'six':
+      return des.filter((valeur) => valeur === 6).reduce((sum, valeur) => sum + valeur, 0);
+    case 'brelan':
+      if (estBrelan(des)) {
+        return des.reduce((sum, valeur) => sum + valeur, 0);
+      } else {
+        return 0;
+      }
+  }
+}
+
+module.exports = {lancerDes,calculerScore,compterOccurrences}
