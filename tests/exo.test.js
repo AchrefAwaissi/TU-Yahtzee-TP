@@ -2,6 +2,8 @@ const {lancerDes}  = require ("../Exercice");
 const {calculerScore} = require ("../Exercice")
 const {compterOccurrences} = require ("../Exercice")
 const {estBrelan} = require ("../Exercice")
+const {estPetiteSuite} = require ("../Exercice")
+
 const NB_LANCERS = 3;
 const NB_DES = 5;
 const NB_FACES = 6;
@@ -100,7 +102,11 @@ const SCORES_POSSIBLES = [
     const score = calculerScore(des, categorie);
     expect(score).toBe(25);
   });
+    //petite suite
+    test('calculerScore - petiteSuite - retourne 30 si c\'est une petite suite', () => {
+     //act
+   
 });
   
 
-  
+});

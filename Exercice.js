@@ -16,7 +16,6 @@ const SCORES_POSSIBLES = [
   'yathzee',
   'chance',
 ];
-
 // Fonction pour lancer les dés
 function lancerDes(nbDes) {
   const des = [];
@@ -53,6 +52,10 @@ function estFull(des) {
   return occurrences.some((occurrence) => occurrence === 2)
     && occurrences.some((occurrence) => occurrence === 3);
 }
+// Fonction pour déterminer si un ensemble de dés est une petite suite
+function estPetiteSuite(des) {
+ 
+}
 function calculerScore(des, categorie) {
   switch (categorie) {
     case 'as':
@@ -85,6 +88,12 @@ function calculerScore(des, categorie) {
           } else {
             return 0;
           }
+          case 'petiteSuite':
+            if (estPetiteSuite(des)) {
+              return 30;
+            } else {
+              return 0;
+            }
   }
 }
-module.exports = {lancerDes,calculerScore,compterOccurrences,estBrelan}
+module.exports = {lancerDes,calculerScore,compterOccurrences,estBrelan,estPetiteSuite}
