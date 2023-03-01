@@ -86,6 +86,20 @@ const SCORES_POSSIBLES = [
       expect(estBrelan(des)).toBe(false);
     });
   });
+  //Cas bonus score est un full
+  test('calculerScore - full - retourne 0 si ce n\'est pas un full', () => {
+    const des = [1, 1, 2, 3, 2];
+    const categorie = 'full';
+    const score = calculerScore(des, categorie);
+    expect(score).toBe(0);
+  });
+  //Cas bonus score est un full
+  test('calculerScore - full - retourne 25 si c\'est un full', () => {
+    const des = [1, 1, 2, 2, 2];
+    const categorie = 'full';
+    const score = calculerScore(des, categorie);
+    expect(score).toBe(25);
+  });
 });
   
 

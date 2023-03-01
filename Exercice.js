@@ -25,12 +25,10 @@ function lancerDes(nbDes) {
   }
   return des;
 }
-
 // Fonction pour lancer un dé
 function lancerDe(nbFaces) {
   return Math.floor(Math.random() * nbFaces) + 1;
 }
-
 // Fonction pour compter le nombre d'occurrences de chaque valeur
 function compterOccurrences(des) {
   const occurrences = [0, 0, 0, 0, 0, 0];
@@ -39,19 +37,22 @@ function compterOccurrences(des) {
   }
   return occurrences;
 }
-
 // Fonction pour déterminer si un ensemble de dés est un carré
 function estCarre(des) {
   const occurrences = compterOccurrences(des);
   return occurrences.some((occurrence) => occurrence >= 4);
 }
-
 // Fonction pour déterminer si un ensemble de dés est un brelan
 function estBrelan(des) {
   const occurrences = compterOccurrences(des);
   return occurrences.some((occurrence) => occurrence >= 3);
 }
-
+// Fonction pour déterminer si un ensemble de dés est un full
+function estFull(des) {
+  const occurrences = compterOccurrences(des);
+  return occurrences.some((occurrence) => occurrence === 2)
+    && occurrences.some((occurrence) => occurrence === 3);
+}
 function calculerScore(des, categorie) {
   switch (categorie) {
     case 'as':
@@ -78,7 +79,12 @@ function calculerScore(des, categorie) {
         } else {
           return 0;
         }
+        case 'full':
+          if (estFull(des)) {
+            return 25;
+          } else {
+            return 0;
+          }
   }
 }
-
 module.exports = {lancerDes,calculerScore,compterOccurrences,estBrelan}
