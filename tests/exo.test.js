@@ -1,4 +1,4 @@
-const {lancerDes}  = require ("../Exercice");
+const {lancerDes,compterOccurrences}  = require ("../Exercice");
 const NB_LANCERS = 3;
 const NB_DES = 5;
 const NB_FACES = 6;
@@ -30,5 +30,13 @@ describe('lancerDes', () => {
       expect(valeur).toBeGreaterThanOrEqual(1);
       expect(valeur).toBeLessThanOrEqual(NB_FACES);
     });
+  });
+});
+//test pour compter le nombre d'occurrences
+describe('compterOccurrences', () => {
+  test('renvoie un tableau de la bonne longueur', () => {
+    const des = [1, 1, 2, 3, 3];
+    const occurrences = compterOccurrences(des);
+    expect(occurrences).toHaveLength(NB_FACES);
   });
 });

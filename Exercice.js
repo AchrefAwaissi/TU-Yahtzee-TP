@@ -28,5 +28,13 @@ function lancerDes(nbDes) {
 function lancerDe(nbFaces) {
   return Math.floor(Math.random() * nbFaces) + 1;
 }
+// Fonction pour compter le nombre d'occurrences de chaque valeur
+function compterOccurrences(des) {
+  const occurrences = [0, 0, 0, 0, 0, 0];
+  for (let i = 0; i < des.length; i++) {
+    occurrences[des[i] - 1]++;
+  }
+  return occurrences;
+}
 //export des fonctions
-module.exports = {lancerDes}
+module.exports = {lancerDes,compterOccurrences}
