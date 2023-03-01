@@ -39,7 +39,16 @@ function compterOccurrences(des) {
   }
   return occurrences;
 }
-//fonction de calcule score
+
+
+
+// Fonction pour déterminer si un ensemble de dés est un carré
+function estCarre(des) {
+  const occurrences = compterOccurrences(des);
+  return occurrences.some((occurrence) => occurrence >= 4);
+}
+
+
 function calculerScore(des, categorie) {
   switch (categorie) {
     case 'as':
@@ -54,8 +63,8 @@ function calculerScore(des, categorie) {
       return des.filter((valeur) => valeur === 5).reduce((sum, valeur) => sum + valeur, 0);
     case 'six':
       return des.filter((valeur) => valeur === 6).reduce((sum, valeur) => sum + valeur, 0);
-    case 'brelan':
-      if (estBrelan(des)) {
+    case 'carre':
+      if (estCarre(des)) {
         return des.reduce((sum, valeur) => sum + valeur, 0);
       } else {
         return 0;

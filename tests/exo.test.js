@@ -53,15 +53,29 @@ const SCORES_POSSIBLES = [
       expect(occurrences[4]).toBe(0);
       expect(occurrences[5]).toBe(0);
     });
+        //cas as somme des ayant un nombre 1
+        test('calculerScore - as - retourne la somme des dés ayant la valeur 1', () => {
+          const des = [1, 2, 1, 3, 4];
+          const categorie = 'as';
+          const score = calculerScore(des, categorie);
+          expect(score).toBe(2);
+        });
+        //la somme des dés ayant une valeur de 4 
+        test('calculerScore - carre - retourne la somme de tous les dés si c\'est un carré', () => {
+          const des = [1, 1, 1, 1, 4];
+          const categorie = 'carre';
+          const score = calculerScore(des, categorie);
+          expect(score).toBe(8);
+        });
+          //la somme des dés qui n'ont une valeur de 4 
+        test('calculerScore - carre - retourne 0 si ce n\'est pas un carré', () => {
+          const des = [1, 2, 1, 3, 4];
+          const categorie = 'carre';
+          const score = calculerScore(des, categorie);
+          expect(score).toBe(0);
+        });    
   });
-    //cas as somme des ayant un nombre 1
-    test('calculerScore - as - retourne la somme des dés ayant la valeur 1', () => {
-      const des = [1, 2, 1, 3, 4];
-      const categorie = 'as';
-      const score = calculerScore(des, categorie);
-      expect(score).toBe(2);
-    });
- 
+
   
 
   
