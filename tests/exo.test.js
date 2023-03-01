@@ -74,8 +74,19 @@ const SCORES_POSSIBLES = [
           const score = calculerScore(des, categorie);
           expect(score).toBe(0);
         });    
+          //Cas bonus score estBrelan
+  describe('estBrelan', () => {
+    test('renvoie true si l\'ensemble de dés est un brelan', () => {
+      const des = [1, 1, 1, 4, 5];
+      expect(estBrelan(des)).toBe(true);
+    });
+//Cas bonus score n est pas Brelan
+    test('renvoie false si l\'ensemble de dés n\'est pas un brelan', () => {
+      const des = [1, 2, 3, 4, 5];
+      expect(estBrelan(des)).toBe(false);
+    });
   });
-
+});
   
 
   

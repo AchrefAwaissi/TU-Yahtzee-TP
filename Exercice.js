@@ -40,14 +40,17 @@ function compterOccurrences(des) {
   return occurrences;
 }
 
-
-
 // Fonction pour déterminer si un ensemble de dés est un carré
 function estCarre(des) {
   const occurrences = compterOccurrences(des);
   return occurrences.some((occurrence) => occurrence >= 4);
 }
 
+// Fonction pour déterminer si un ensemble de dés est un brelan
+function estBrelan(des) {
+  const occurrences = compterOccurrences(des);
+  return occurrences.some((occurrence) => occurrence >= 3);
+}
 
 function calculerScore(des, categorie) {
   switch (categorie) {
@@ -69,7 +72,13 @@ function calculerScore(des, categorie) {
       } else {
         return 0;
       }
+      case 'brelan':
+        if (estBrelan(des)) {
+          return des.reduce((sum, valeur) => sum + valeur, 0);
+        } else {
+          return 0;
+        }
   }
 }
 
-module.exports = {lancerDes,calculerScore,compterOccurrences}
+module.exports = {lancerDes,calculerScore,compterOccurrences,estBrelan}
